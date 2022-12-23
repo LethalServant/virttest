@@ -73,3 +73,11 @@
     cd /vagrant && \
     ./run-winserver2019.sh
   become: true
+- name: VIRSH List
+  shell:
+    virsh list --all
+  become: true
+- name: Run ivguestinfo
+  shell:
+    ivguestinfo -D server2019_winser2019
+  become: true

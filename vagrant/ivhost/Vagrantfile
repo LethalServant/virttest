@@ -6,10 +6,8 @@ Vagrant.configure("2") do |config|
       vbox.customize ["modifyvm", :id, "--nested-hw-virt", "on"]
 
       vbox.memory = 8192
-      vbox.cpus = 2
+      vbox.cpus = 3
     end
-
-    config.vm.network "public_network"
 
     # Ubuntu 20.04 (Focal) guest VM
     config.vm.define "ivhost_ubuntu2004" do |ivhost|
@@ -19,7 +17,7 @@ Vagrant.configure("2") do |config|
       ivhost.vm.synced_folder ".", "/vagrant"
       ivhost.vm.provision "ansible" do |ansible|
         ansible.playbook = "../../playbooks/ivhost.yml"
-        # ansible.verbose = "vvv"
+        ansible.verbose = "vvv"
       end
     end
   end

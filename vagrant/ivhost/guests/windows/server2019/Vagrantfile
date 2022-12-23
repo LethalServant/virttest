@@ -9,10 +9,11 @@ Vagrant.configure("2") do |config|
 
       winser2019.winrm.port = 5986
       winser2019.winrm.transport = :ssl
+      winser2019.winrm.ssl_peer_verification = false
 
       winser2019.vm.provider :libvirt do |domain|
-        domain.cpus = 1
-        domain.memory = 4096
+        # domain.cpus = 1
+        # domain.memory = 4096
         domain.storage :file, :size => '20G'
         domain.forward_ssh_port = true
       end
